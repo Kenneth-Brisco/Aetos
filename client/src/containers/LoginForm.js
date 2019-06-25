@@ -54,10 +54,22 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: "#e0e0e0", flex: 1 }}>
+      <View style={{ backgroundColor: "#fff", flex: 1, justifyContent: "center" }}>
+        <Image
+            style={{
+              height:120,
+              width: 250,
+              alignSelf: "center"
+            }}
+            source={require("./aetlogo.jpg")}
+          />
+
         <Card>
           <CardSection>
             <Input
+              name="envelope"
+              color="#008BAA"
+              type="evilicon"
               label="Email"
               placeholder="email@gmail.com"
               onChangeText={this.onEmailChange.bind(this)}
@@ -67,6 +79,9 @@ class LoginForm extends Component {
           {this.renderError()}
           <CardSection>
             <Input
+              name="lock"
+              color="#008BAA"
+              type="evilicon"
               onChangeText={this.onPasswordChange.bind(this)}
               secureTextEntry
               label="Password"
@@ -95,7 +110,8 @@ const mapStateToProps = ({ auth }) => {
   return { email, password, error, loading };
 };
 
-export default connect(
+ export default connect(
   mapStateToProps,
   { emailChanged, passwordChanged, loginUser }
 )(LoginForm);
+ 
